@@ -1,0 +1,26 @@
+[project]
+name = "ngumpulin-fastapi-uvicorn"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.115.12",
+    "python-dotenv>=1.0.0",
+    "langchain-groq>=0.3.2",
+    "langgraph>=0.4.7",
+    "typing-extensions>=4.0.0",
+    "supabase>=2.13.0",
+    "langchain>=0.3.25",
+    "langchain-community>=0.3.24",
+    "langchain-pinecone>=0.2.6",
+    "gliner>=0.2.20",
+    "scikit-learn>=1.6.1",
+    "pandas>=2.2.3",
+    "pypdf>=3.0.0",
+]
+
+[tool.uv.workspace]
+members = [
+    "test",
+]

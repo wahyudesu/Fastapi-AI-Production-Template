@@ -1,0 +1,11 @@
+.env
+__pycache__
+.ropeproject
+.venv
+.pytest_cache
+
+/notebook/gliner_Med
+
+mlflow.db
+mlruns/
+.ruff_cache/

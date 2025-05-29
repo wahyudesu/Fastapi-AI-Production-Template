@@ -1,0 +1,1 @@
+docker push gcr.io/ngumpulin/ngumpulin-fastapi-uvicorn-3
