@@ -3,16 +3,19 @@
 <p align="center">Simple starter template for your Machine Learning/AI projects.</p>
 
 <p align="center">
-    <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template">
+    <img src="public/images/thumbnail.png" alt="FastAPI AI Production Template Thumbnail" width="600">
+</p>
+<p align="center">
+    <a href="">
+        <img src="https://img.shields.io/github/created-at/wahyudesu/Fastapi-AI-Production-Template">
+    </a>
+    <a href="">
         <img src="https://img.shields.io/github/last-commit/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Last Commit">
     </a>
-    <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template">
-        <img src="https://img.shields.io/github/languages/top/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Top Language">
-    </a>
-    <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template">
+    <a href="">
         <img src="https://img.shields.io/github/languages/count/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Languages Count">
     </a>
-    <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template">
+    <a href="">
         <img src="https://img.shields.io/github/repo-size/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Repo Size">
     </a>
     <a href="https://github.com/wahyudesu">
@@ -66,12 +69,17 @@ root-project/
 └── README.md                  # Project documentation
 ```
 
-## Installation & Setup (Local)
+## Installation & Setup
+
+Make sure you have [`uv` installed](https://docs.astral.sh/uv/getting-started/installation/) .
 
 ```powershell
 # Clone repository
 git clone https://github.com/wahyudesu/fastapi-ai-template
 cd fastapi-ai-template
+
+# Install Python:
+uv python install 3.12.8
 
 # Development
 uv venv
@@ -110,8 +118,17 @@ uv run pytest
 > Project ini dikembangkan untuk workflow LLMOps/ML pipeline modern, siap untuk deployment di cloud maupun VPS.
 
 ## FAQ
-1. **Apakah ini gratis?**
-  - Ya, gratis untuk penggunaan secara personal dan non-komersial.
-2. **Apakah ini open-source?**
-  - Ya, open-source dibawah lisensi MIT.
 
+<details>
+    <summary><strong>Apakah ini gratis?</strong></summary>
+    <ul>
+        <li>Ya, gratis untuk penggunaan secara personal dan non-komersial.</li>
+    </ul>
+</details>
+
+<details>
+    <summary><strong>Apakah ini open-source?</strong></summary>
+    <ul>
+        <li>Ya, open-source dibawah lisensi MIT.</li>
+    </ul>
+</details>
