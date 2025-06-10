@@ -18,9 +18,17 @@ dependencies = [
     "scikit-learn>=1.6.1",
     "pandas>=2.2.3",
     "pypdf>=3.0.0",
+    "comet-ml>=3.49.10",
+    "opik>=1.7.28",
+    "comet-llm>=2.2.7",
 ]
 
 [tool.uv.workspace]
 members = [
     "test",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
 ]

@@ -1,7 +1,7 @@
 import os
 import getpass
 from dotenv import load_dotenv
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from langgraph.graph import StateGraph, START, END
 from langchain_groq import ChatGroq
@@ -18,11 +18,17 @@ def _set_env(var: str):
 
 # _set_env("GROQ_API_KEY")  # uncomment jika perlu input manual
 
-# Inisialisasi LLM dari Groq (contoh: gemma2-9b-it)
+# Inisialisasi LLM dari Groq dengan error handling
 try:
-    llm = ChatGroq(model="gemma2-9b-it", api_key=os.getenv("GROQ_API_KEY"))
+    groq_api_key = os.getenv("GROQ_API_KEY")
+    if not groq_api_key:
+        print("⚠️ GROQ_API_KEY not found in environment variables")
+        llm = None
+    else:
+        llm = ChatGroq(model="gemma2-9b-it", api_key=groq_api_key)
+        print("✅ ChatGroq initialized successfully")
 except Exception as e:
-    print(f"Warning: Failed to initialize ChatGroq: {e}")
+    print(f"❌ Failed to initialize ChatGroq: {e}")
     llm = None
 
 # --- Tipe Data State ---
@@ -174,3 +180,19 @@ def generate_feedback(payload: AssignmentRequest):
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to generate feedback: {str(e)}")
+
+@router.get("/debug")
+async def debug_status():
+    """Debug endpoint to check API key and services"""
+    groq_key = os.getenv("GROQ_API_KEY")
+    
+    return {
+        "groq": {
+            "api_key_exists": bool(groq_key),
+            "key_length": len(groq_key) if groq_key else 0,
+            "format_valid": groq_key.startswith("gsk_") if groq_key else False,
+            "llm_initialized": llm is not None
+        },
+        "environment": os.getenv("ENVIRONMENT"),
+        "debug_mode": os.getenv("DEBUG")
+    }
