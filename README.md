@@ -36,7 +36,6 @@
 - Integrate LLM workflows, monitoring, and prompt management
 - Support end-to-end model experimentation, deployment, and monitoring
 
-
 ## Features
 - [`FastAPI`](https://fastapi.tiangolo.com/) for API and backend
 - [`LangChain`](https://www.langchain.com/) for LLM integration and AI workflows
@@ -55,17 +54,13 @@ root-project/
 │   ├── main.py                # FastAPI app entrypoint
 │   ├── dependencies.py        # Dependency injection (token, etc)
 │   ├── internal/              # Internal/private routers (e.g. admin)
-│   ├── routers/               # API routers ()
-│   │   ├── assignment.py      # Assignment upload & analysis endpoints
-│   │   ├── feedback.py        # AI feedback endpoints (LLM, LangChain, etc)
-│   │   ├── users.py           # User management endpoints
-│   │   └── items.py           # Example endpoints
-│   └── model/                 # Model artifacts (pickle, etc)
-│       └── pickle/
-│           └── best_model-1.pkl
+│   ├── routers/               # API routers (LLM, feedback, chatbot, etc)
+│   │   ├── chatbot.py         # Chatbot endpoints (file upload, entity extraction, plagiarism, etc)
+│   │   ├── example.py         # Example endpoints (LLM workflow, feedback, etc)
+│   │   └── predict.py         # Prediction endpoints (ML Predict, summarization, relevance, etc)
+│   └── model/                 # Model artifacts (pickle)
 ├── notebook/                  # Jupyter notebooks for experiments
-├── public/                    # File file statis
-├── .env                       # Environment variables (API keys, etc)
+├── public/                    # File static (image, documents, etc)
 ├── pyproject.toml             # Python dependencies & project config
 ├── uv.lock                    # Lockfile for uv/poetry
 └── README.md                  # Project documentation
