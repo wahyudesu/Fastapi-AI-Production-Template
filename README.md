@@ -1,6 +1,6 @@
 <h1 align="center">Fastapi AI Production Template</h1>
 
-<p align="center">Simple starter template for your Machine Learning/AI projects.</p>
+<h3 align="center">Simple starter template for your Machine Learning/AI projects</h3>
 
 <p align="center">
     <img src="public/images/thumbnail.png" alt="FastAPI AI Production Template Thumbnail" width="600">
@@ -24,11 +24,11 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=white" alt="Python">
+    <img src="https://img.shields.io/badge/Python-3670A0?style=flat&logo=Python&logoColor=white" alt="Python">
     <img src="https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi&logoColor=white" alt="FastAPI">
-    <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white" alt="Docker">
+    <img src="https://img.shields.io/badge/Docker-%230db7ed.svg?style=flat&logo=Docker&logoColor=white" alt="Docker">
     <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white" alt="Supabase">
-    <img src="https://img.shields.io/badge/langchain-1C3C3C?style=flat&logo=langchain&logoColor=white" alt="Langchain">
+    <img src="https://img.shields.io/badge/Langchain-1C3C3C?style=flat&logo=Langchain&logoColor=white" alt="Langchain">
     <img src="https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=Pydantic&logoColor=white" alt="Pydantic">
 </p>
 
@@ -116,6 +116,16 @@ uv run pytest
 
 
 > Project ini dikembangkan untuk workflow LLMOps/ML pipeline modern, siap untuk deployment di cloud maupun VPS.
+
+
+## 🤝 Contributing
+
+1. Fork this repository;
+2. Create your branch: `git checkout -b my-new-feature`;
+3. Commit your changes: `git commit -m 'Add some feature'`;
+4. Push to the branch: `git push origin my-new-feature`.
+5. After your pull request is merged, you can safely delete your branch.
+
 
 ## FAQ
 
