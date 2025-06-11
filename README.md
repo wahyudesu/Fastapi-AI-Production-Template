@@ -10,9 +10,9 @@
 ![Created date](https://img.shields.io/github/created-at/wahyudesu/Fastapi-AI-Production-Template?color=greenlime)
   [![pytest Action](https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/pytest.yml/badge.svg)](https://github.com/IbraheemTuffaha/python-fastapi-template/actions/workflows/pytest.yml)
   [![format Action](https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/format.yml/badge.svg)](https://github.com/IbraheemTuffaha/python-fastapi-template/actions/workflows/format.yml)
-  [![Python Version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwahyudesu%2FFastapi-AI-Production-Template%2Fmain%2Fpyproject.toml&query=project.requires-python&label=python&color=greenlime)](https://github.com/wahyudesu/Fastapi-AI-Production-Template/blob/main/pyproject.toml)
-  [![GitHub License](https://img.shields.io/github/license/IbraheemTuffaha/python-fastapi-template?color=greenlime)](https://github.com/IbraheemTuffaha/python-fastapi-template/blob/main/LICENSE)
-  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=IbraheemTuffaha_python-fastapi-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=IbraheemTuffaha_python-fastapi-template)
+[![Python Version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwahyudesu%2FFastapi-AI-Production-Template%2Fmain%2Fpyproject.toml&query=project.requires-python&label=python&color=greenlime)](https://github.com/wahyudesu/Fastapi-AI-Production-Template/blob/main/pyproject.toml)
+  [![GitHub License](https://img.shields.io/github/license/wahyudesu/Fastapi-AI-Production-Template?color=greenlime)](https://github.com/IbraheemTuffaha/python-fastapi-template/blob/main/LICENSE)
+  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=IbraheemTuffaha_python-fastapi-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wahyudesu_Fastapi-AI-Production-Template)
 </div>
 
 <p align="center">
