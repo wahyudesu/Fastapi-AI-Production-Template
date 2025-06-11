@@ -2,24 +2,51 @@
 
 <h3 align="center">Simple starter template for your Machine Learning/AI projects</h3>
 <p align="center">
-    <img src="public/images/thumbnail.png" alt="FastAPI AI Production Template Thumbnail" width="600">
+    <img src="public/thumbnail.png" alt="FastAPI AI Production Template Thumbnail" width="600">
 </p>
+
+<div align="center">
+
+![Created date](https://img.shields.io/github/created-at/wahyudesu/Fastapi-AI-Production-Template?color=greenlime)
+  [![pytest Action](https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/pytest.yml/badge.svg)](https://github.com/IbraheemTuffaha/python-fastapi-template/actions/workflows/pytest.yml)
+  [![format Action](https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/format.yml/badge.svg)](https://github.com/IbraheemTuffaha/python-fastapi-template/actions/workflows/format.yml)
+  [![Python Version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwahyudesu%2FFastapi-AI-Production-Template%2Fmain%2Fpyproject.toml&query=project.requires-python&label=python&color=greenlime)](https://github.com/wahyudesu/Fastapi-AI-Production-Template/blob/main/pyproject.toml)
+  [![GitHub License](https://img.shields.io/github/license/IbraheemTuffaha/python-fastapi-template?color=greenlime)](https://github.com/IbraheemTuffaha/python-fastapi-template/blob/main/LICENSE)
+  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=IbraheemTuffaha_python-fastapi-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=IbraheemTuffaha_python-fastapi-template)
+</div>
+
 <p align="center">
-    <a href="">
-        <img src="https://img.shields.io/github/created-at/wahyudesu/Fastapi-AI-Production-Template">
-    </a>
-    <a href="">
-        <img src="https://img.shields.io/github/last-commit/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Last Commit">
-    </a>
-    <a href="">
-        <img src="https://img.shields.io/github/languages/count/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Languages Count">
-    </a>
-    <a href="">
-        <img src="https://img.shields.io/github/repo-size/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Repo Size">
-    </a>
-    <a href="https://github.com/wahyudesu">
-        <img src="https://img.shields.io/github/followers/wahyudesu?style=flat-square" alt="Followers">
-    </a>
+    <div align="center">
+        <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template">
+            <img src="https://img.shields.io/github/created-at/wahyudesu/Fastapi-AI-Production-Template" alt="Created At">
+        </a>
+        <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template/commits/main">
+            <img src="https://img.shields.io/github/last-commit/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Last Commit">
+        </a>
+        <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template">
+            <img src="https://img.shields.io/github/repo-size/wahyudesu/Fastapi-AI-Production-Template?style=flat-square" alt="Repo Size">
+        </a>
+        <a href="https://github.com/wahyudesu">
+            <img src="https://img.shields.io/github/followers/wahyudesu?style=flat-square" alt="Followers">
+        </a>
+        <br>
+        <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/pytest.yml">
+            <img src="https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/pytest.yml/badge.svg" alt="pytest Action">
+        </a>
+        <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/format.yml">
+            <img src="https://github.com/wahyudesu/Fastapi-AI-Production-Template/actions/workflows/format.yml/badge.svg" alt="format Action">
+        </a>
+        <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template/blob/main/pyproject.toml">
+            <img src="https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fwahyudesu%2FFastapi-AI-Production-Template%2Fmain%2Fpyproject.toml&query=project.requires-python&label=python&color=greenlime" alt="Python Version">
+        </a>
+        <a href="https://github.com/wahyudesu/Fastapi-AI-Production-Template/blob/main/LICENSE">
+            <img src="https://img.shields.io/github/license/wahyudesu/Fastapi-AI-Production-Template?color=greenlime" alt="GitHub License">
+        </a>
+        <a href="https://sonarcloud.io/summary/new_code?id=IbraheemTuffaha_python-fastapi-template">
+            <img src="https://sonarcloud.io/api/project_badges/measure?project=wahyudesu/Fastapi-AI-Production-Template&metric=alert_status" alt="Quality Gate Status">
+        </a>
+    </div>
+</div>
 </p>
 
 <p align="center">
