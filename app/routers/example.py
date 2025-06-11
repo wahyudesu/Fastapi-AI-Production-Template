@@ -12,9 +12,11 @@ from ..dependencies import get_query_token
 # --- Konfigurasi API Key Groq (bisa lewat environment variable) ---
 load_dotenv()
 
+
 def _set_env(var: str):
     if not os.environ.get(var):
         os.environ[var] = getpass.getpass(f"{var}: ")
+
 
 # _set_env("GROQ_API_KEY")  # uncomment jika perlu input manual
 
@@ -31,10 +33,12 @@ except Exception as e:
     print(f"❌ Failed to initialize ChatGroq: {e}")
     llm = None
 
+
 # --- Tipe Data State ---
 class AssignmentMeta(TypedDict):
     title: str
     description: str
+
 
 class State(TypedDict):
     assignment_meta: AssignmentMeta
@@ -46,25 +50,29 @@ class State(TypedDict):
     personalized_feedback: str
     combined_output: str
 
+
 # --- Node Agent Functions ---
 def input_meta(state: State) -> dict:
     return {"assignment_meta": state["assignment_meta"]}
 
+
 def input_content(state: State) -> dict:
     return {"assignment_content": state["assignment_content"]}
+
 
 def summarizer_agent(state: State) -> dict:
     if llm is None:
         raise HTTPException(status_code=500, detail="LLM not properly initialized")
-    
+
     content = state["assignment_content"]
     msg = llm.invoke(f"Summarize the following assignment content:\n\n{content}")
     return {"summary": msg.content}
 
+
 def relevance_agent(state: State) -> dict:
     if llm is None:
         raise HTTPException(status_code=500, detail="LLM not properly initialized")
-    
+
     title = state["assignment_meta"]["title"]
     desc = state["assignment_meta"]["description"]
     prompt = f"""Analyze the relevance between the following title and description of an assignment:
@@ -76,10 +84,11 @@ Does the title appropriately reflect the content described? Provide analysis."""
     msg = llm.invoke(prompt)
     return {"relevance_analysis": msg.content}
 
+
 def aggregator(state: State) -> dict:
     if llm is None:
         raise HTTPException(status_code=500, detail="LLM not properly initialized")
-    
+
     summary = state["summary"]
     relevance = state["relevance_analysis"]
     persona = state["persona"]
@@ -103,11 +112,8 @@ FEEDBACK:
     personalized = llm.invoke(personalization_prompt).content
 
     combined = f"🎓 Final Personalized Feedback:\n\n{personalized}"
-    return {
-        "feedback_analysis": feedback,
-        "personalized_feedback": personalized,
-        "combined_output": combined
-    }
+    return {"feedback_analysis": feedback, "personalized_feedback": personalized, "combined_output": combined}
+
 
 # --- Bangun Workflow ---
 builder = StateGraph(State)
@@ -128,17 +134,15 @@ builder.add_edge("aggregator", END)
 workflow = builder.compile()
 
 # --- FastAPI Router Setup ---
-router = APIRouter(
-    prefix="/feedback",
-    tags=["feedback"],
-    dependencies=[Depends(get_query_token)]
-)
+router = APIRouter(prefix="/feedback", tags=["feedback"], dependencies=[Depends(get_query_token)])
+
 
 class AssignmentRequest(BaseModel):
     title: str
     description: str
     content: str
     persona: str
+
 
 class AssignmentResponse(BaseModel):
     summary: str
@@ -147,11 +151,12 @@ class AssignmentResponse(BaseModel):
     personalized_feedback: str
     combined_output: str
 
+
 @router.post("/", response_model=AssignmentResponse)
 def generate_feedback(payload: AssignmentRequest):
     """
     Generate AI-powered feedback for academic assignments.
-    
+
     This endpoint analyzes assignment content and provides:
     - Content summary
     - Relevance analysis between title and description
@@ -160,7 +165,7 @@ def generate_feedback(payload: AssignmentRequest):
     """
     if llm is None:
         raise HTTPException(status_code=500, detail="AI service not available")
-    
+
     initial_state: State = {
         "assignment_meta": {
             "title": payload.title,
@@ -172,27 +177,28 @@ def generate_feedback(payload: AssignmentRequest):
         "relevance_analysis": "",
         "feedback_analysis": "",
         "personalized_feedback": "",
-        "combined_output": ""
+        "combined_output": "",
     }
-    
+
     try:
         result = workflow.invoke(initial_state)
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to generate feedback: {str(e)}")
 
+
 @router.get("/debug")
 async def debug_status():
     """Debug endpoint to check API key and services"""
     groq_key = os.getenv("GROQ_API_KEY")
-    
+
     return {
         "groq": {
             "api_key_exists": bool(groq_key),
             "key_length": len(groq_key) if groq_key else 0,
             "format_valid": groq_key.startswith("gsk_") if groq_key else False,
-            "llm_initialized": llm is not None
+            "llm_initialized": llm is not None,
         },
         "environment": os.getenv("ENVIRONMENT"),
-        "debug_mode": os.getenv("DEBUG")
+        "debug_mode": os.getenv("DEBUG"),
     }

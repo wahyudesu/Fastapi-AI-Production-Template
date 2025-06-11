@@ -19,13 +19,13 @@ jobs:
             command: mypy .
     steps:
       - uses: actions/checkout@v4
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version-file: "pyproject.toml"
+          python-version: "3.12"  # Pastikan versi Python sesuai
       - name: Install dependencies
-        run: uv sync --frozen
+        run: |
+          pip install uv
+          uv sync --frozen
       - name: Run ${{ matrix.linter }} check
-        run: uv run ${{ matrix.command }}
+        run: ${{ matrix.command }}
