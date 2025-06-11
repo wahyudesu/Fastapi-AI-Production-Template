@@ -1,0 +1,10 @@
+version: 1
+updates:
+- package-ecosystem: "docker"
+  directory: "/"
+  schedule:
+    interval: "monthly"
+- package-ecosystem: "pip"
+  directory: "/"
+  schedule:
+    interval: "monthly"

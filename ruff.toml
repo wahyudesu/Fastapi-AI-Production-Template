@@ -1,0 +1,51 @@
+line-length = 120
+[format]
+quote-style = "double"
+docstring-code-format = true
+
+exclude = [
+  "./.cache",
+  "./.git",
+  "./.idea",
+  "./.mypy_cache",
+  "./.pytest_cache",
+  "./.venv",
+  "./venv",
+  "./env",
+  "./cached_venv",
+  "./docs",
+  "./var",
+  "./.vscode",
+]
+
+[lint.isort]
+lines-after-imports = 2
+lines-between-types = 1
+no-lines-before = ["future", "standard-library"]
+no-sections = false
+order-by-type = true
+
+[lint]
+extend-select = ["E", "F", "I", "UP", "B", "W", "C90", "N", "D", "PYI", "PT", "RET", "SIM", "ARG", "ERA"]
+ignore = [
+  "B008",
+  "D100",
+  "D101",
+  "D102",
+  "D103",
+  "D104",
+  "D105",
+  "D106",
+  "D107",
+  "D203",
+  "D213",
+  "COM812"
+]
+
+[lint.per-file-ignores]
+"test_*.py" = ["S101"]
+"tests.py" = ["S101"]
+"tests_*.py" = ["S101"]
+"*/tests/*" = ["S101"]
+"conftest.py" = ["S101"]
+"__init__.py" = ["F401", "F403"]

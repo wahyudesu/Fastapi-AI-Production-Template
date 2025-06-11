@@ -1,0 +1,31 @@
+name: format
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        linter: [ruff, mypy]
+        include:
+          - linter: ruff
+            command: ruff check --diff .
+          - linter: mypy
+            command: mypy .
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+      - name: Install dependencies
+        run: uv sync --frozen
+      - name: Run ${{ matrix.linter }} check
+        run: uv run ${{ matrix.command }}

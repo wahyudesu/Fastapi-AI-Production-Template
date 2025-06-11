@@ -1,7 +1,6 @@
 <h1 align="center">Fastapi AI Production Template</h1>
 
 <h3 align="center">Simple starter template for your Machine Learning/AI projects</h3>
-
 <p align="center">
     <img src="public/images/thumbnail.png" alt="FastAPI AI Production Template Thumbnail" width="600">
 </p>
