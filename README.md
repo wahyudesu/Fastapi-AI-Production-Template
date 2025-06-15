@@ -54,6 +54,13 @@
 - [`Ruff`](https://docs.astral.sh/ruff/) for Python linting and formatting
 - [`Opik`](https://www.comet.com/site/products/opik/) for ai agent and prompt management monitoring
 
+## AI Stack
+- Langgraph
+- Groq
+- 
+## ML Stack
+- iris data
+
 ## Project structure
 
 ```

@@ -1,10 +1,10 @@
 """
-This will be a simple generative ai using LangChain for text-to-response functionality.
+ini bakal jadi ai agent sederhana yang menggunakan langchain untuk text to response
 """
 
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
-from langchain_groq import ChatGroq
+from langchain_community.llms import Groq
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Inisialisasi LLM dari Groq
-llm = ChatGroq(
+llm = Groq(
     model="mixtral-8x7b-32768",
     api_key=os.getenv("GROQ_API_KEY")
 )
