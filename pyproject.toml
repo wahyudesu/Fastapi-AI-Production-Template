@@ -1,36 +1,16 @@
 [project]
-name = "ngumpulin-fastapi-uvicorn"
-version = "0.1.0"
-description = "Add your description here"
+name = "Fastapi AI Production Boilerplate"
+version = "0.3.0"
+description = "Simple starter repo for your Machine Learning/AI projects"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]>=0.115.12",
-    "python-dotenv>=1.0.0",
-    "langchain-groq>=0.3.2",
-    "langgraph>=0.4.7",
-    "typing-extensions>=4.0.0",
-    "supabase>=2.13.0",
-    "langchain>=0.3.25",
-    "langchain-community>=0.3.24",
-    "langchain-pinecone>=0.2.6",
-    "gliner>=0.2.20",
-    "scikit-learn>=1.6.1",
-    "pandas>=2.2.3",
-    "pypdf>=3.0.0",
-    "comet-ml>=3.49.10",
-    "opik>=1.7.28",
-    "comet-llm>=2.2.7",
+    "loguru>=0.7.3",
+    "uvicorn>=0.34.2",
 ]
 
 [tool.uv.workspace]
 members = [
     "test",
-]
-
-[dependency-groups]
-dev = [
-    "ipykernel>=6.29.5",
-    "pytest>=8.3.5",
-    "ruff>=0.11.13",
 ]
