@@ -1,16 +1,28 @@
 [project]
-name = "Fastapi AI Production Boilerplate"
+name = "Fastapi-AI-Production-Boilerplate"
 version = "0.3.0"
 description = "Simple starter repo for your Machine Learning/AI projects"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]>=0.115.12",
+    "langchain>=0.3.25",
     "loguru>=0.7.3",
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.13",
+    "scikit-learn>=1.7.0",
     "uvicorn>=0.34.2",
+    "xgboost>=3.0.2",
 ]
 
 [tool.uv.workspace]
 members = [
     "test",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
 ]

@@ -1,19 +1,22 @@
-# predict.py
-
-import joblib
+# Contoh prediksi terhadap inputan baru
+import numpy as np
 import pandas as pd
+import joblib
 
-# Load model
-model = joblib.load('model_california_housing.pkl')
+# Load model dari pickle
+model = joblib.load('model.pkl')
 
-# Contoh input data: Median Income, Average Rooms, House Age
-input_data = pd.DataFrame({
-    'MedInc': [8.3252],    # median income
-    'AveRooms': [6.9841],  # average number of rooms
-    'HouseAge': [15.0],    # house age
+# Contoh input baru (ganti sesuai fitur yang digunakan pada pelatihan)
+input_baru = pd.DataFrame({
+    'OverallQual': [7],
+    'GrLivArea': [1710],
+    'GarageCars': [2],
+    'TotalBsmtSF': [856],
 })
 
-# Prediksi
-prediction = model.predict(input_data)
+# Pastikan kolom input_baru sama dengan model
+input_baru = input_baru.reindex(columns=model.get_booster().feature_names, fill_value=0)
 
-print(f"💰 Prediksi harga rumah: {prediction[0]:.2f} (dalam ratusan ribu USD)")
+# Prediksi harga
+prediksi_baru = model.predict(input_baru)
+print(f'Prediksi harga rumah: {prediksi_baru[0]:.2f}')

@@ -54,35 +54,34 @@
 - [`Ruff`](https://docs.astral.sh/ruff/) for Python linting and formatting
 - [`Opik`](https://www.comet.com/site/products/opik/) for ai agent and prompt management monitoring
 
-## AI Stack
-- Langgraph
-- Groq
-- 
-## ML Stack
-- iris data
-
-## Project structure
+## Project Structure
 
 ```
 root-project/
 ├── app/
-│   ├── main.py                # FastAPI app entrypoint
-│   ├── dependencies.py        # Dependency injection (token, etc)
-│   ├── internal/              # Internal/private routers (e.g. admin)
-│   ├── routers/               # API routers (LLM, feedback, chatbot, etc)
-│   │   ├── chatbot.py         # Chatbot endpoints (file upload, entity extraction, plagiarism, etc)
-│   │   ├── example.py         # Example endpoints (LLM workflow, feedback, etc)
-│   │   └── predict.py         # Prediction endpoints (ML Predict, summarization, relevance, etc)
-│   └── model/                 # Model artifacts (pickle)
+│   ├── main.py                # FastAPI entrypoint
+│   ├── dependencies.py        # Dependency management (e.g., tokens)
+│   ├── internal/              # Internal routers (e.g., admin)
+│   ├── routers/               # API routers (chatbot, predict, etc.)
+│   │   ├── chatbot.py         # Chatbot endpoints (file upload, entity extraction, etc.)
+│   │   ├── example.py         # Example endpoints (LLM workflow, feedback, etc.)
+│   │   └── predict.py         # Prediction endpoints (ML, summarization, etc.)
+│   └── model/                 # Model artifacts (e.g., pickle files)
 ├── notebook/                  # Jupyter notebooks for experiments
-├── public/                    # File static (image, documents, etc)
-├── pyproject.toml             # Python dependencies & project config
+├── public/                    # Static files (images, documents, etc.)
+├── pyproject.toml             # Python configuration and dependencies
 ├── uv.lock                    # Lockfile for uv/poetry
 └── README.md                  # Project documentation
 ```
-This modular approach keeps your code organized as your AI application grows in complexity.
 
-> For comprehensive documentation, visit the FastAPI official docs.
+This structure makes code management and feature development easier.
+
+- For LLM, use notebooks such as `notebooks/langgraph.ipynb` for experiments.
+- For ML, use notebooks like `notebook/bayesian-regression.ipynb`, the `data` folder for datasets, and the `model` folder for models and training/prediction code.
+
+- Model serving and API endpoints are organized in the `app/routers` folder.
+
+> For more details, see the [FastAPI Documentation](https://fastapi.tiangolo.com/).
 
 ## Installation & Setup
 
