@@ -31,7 +31,7 @@
     <img src="https://img.shields.io/badge/Python-3670A0?style=flat&logo=Python&logoColor=white" alt="Python">
     <img src="https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi&logoColor=white" alt="FastAPI">
     <img src="https://img.shields.io/badge/Docker-%230db7ed.svg?style=flat&logo=Docker&logoColor=white" alt="Docker">
-    <img src="https://img.shields.io/badge/Supabase-35bc7f?style=flat&logo=supabase&logoColor=white" alt="Supabase">
+    <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL">
     <img src="https://img.shields.io/badge/Langchain-1C3C3C?style=flat&logo=Langchain&logoColor=white" alt="Langchain">
     <img src="https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=Pydantic&logoColor=white" alt="Pydantic">
 </p>
@@ -43,16 +43,19 @@
 - Integrate LLM workflows, monitoring, and prompt management
 - Support end-to-end model experimentation, deployment, and monitoring
 
-
 ## Features
-- [`FastAPI`](https://fastapi.tiangolo.com/) for API and backend
-- [`LangChain`](https://www.langchain.com/) for LLM integration and AI workflows
-- [`Groq`](https://groq.com/) for fast LLM inference and model provider
-- [`uv`](https://docs.astral.sh/uv/) for Python environment management
-- [`Docker`](https://www.docker.com/) for containerization
-- [`PostgreSQL`](https://www.postgresql.org/) for database
-- [`Ruff`](https://docs.astral.sh/ruff/) for Python linting and formatting
-- [`Opik`](https://www.comet.com/site/products/opik/) for ai agent and prompt management monitoring
+- ✅Built in Security and API endpoint protection
+- ✅Lightweight Dockerfile with best practices
+- ✅Router serving support for ML, AI models and AI agents
+- ✅Project dependencies, env using uv
+- ✅Prompt management, Observability ML and LLM using Opik
+- ✅Kubernetes manifests: Deployment, Service, HPA, Ingress
+- ✅Ready for production and educational use
+- ✅Lint and formatting using ruff
+- ✅Jupyter notebook for experiment ml and building ai agent
+- ✅Rate limiter
+- ✅Rich feature but its very simple and easy development
+- ✅Very well documentent for easy understanding
 
 ## Project Structure
 
@@ -110,6 +113,10 @@ docker compose up --build -d
 # Check service status
 docker compose ps
 ```
+Linter
+```
+uv run ruff check
+```
 
 
 ## Run on local
@@ -140,7 +147,6 @@ uv run pytest
 
 > Project ini dikembangkan untuk workflow LLMOps/ML pipeline modern, siap untuk deployment di cloud maupun VPS.
 
-
 ## 🤝 Contributing
 
 1. Fork this repository;
@@ -149,6 +155,9 @@ uv run pytest
 4. Push to the branch: `git push origin my-new-feature`.
 5. After your pull request is merged, you can safely delete your branch.
 
+## ⏭️ Whats Next
+Saya membuat repo ini se-minimal dan se-sederhana mungkin, dengan fitur yang cukup lengkap, agar memudahkan pemula dalam mengembangkan project melalui repo ini.
+Jika repo ini dirasa bermanfaat bisa bintangin dan share ke teman yang membutuhkan, jika cukup ramai saya ada rencana untuk membuat versi lanjutannya yang lebih advanced, dengan fitur tambahan seperti JWT security, ORM, Grafana, dan ML integration. Yang bakal fokus spesifik ke ML dan LLMOps
 
 ## FAQ
 

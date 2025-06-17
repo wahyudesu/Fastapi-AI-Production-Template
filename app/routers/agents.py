@@ -1,15 +1,13 @@
-"""
-This module uses LangChain and OpenAI to create a simple research agent.
+"""This module uses LangChain and OpenAI to create a simple research agent.
 It searches for articles, extracts content, and generates a New York Times-style article on a given topic.
 """
 
-import os
-from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
 from langchain_community.tools import DuckDuckGoSearchResults
 from langchain_groq import ChatGroq
-
 from newspaper import Article
+
 
 # Inisialisasi model (sama dengan GPT-4o di phi)
 llm = ChatGroq(model_name="gpt-4o")
@@ -61,14 +59,15 @@ chain = LLMChain(llm=llm, prompt=prompt_template)
 # Fungsi utama
 from datetime import datetime
 
+
 def generate_article(topic):
     print(f"🔍 Searching for articles about: {topic}")
     links = search_links(topic)
     print(f"✅ Found {len(links)} links.")
-    
+
     print("📰 Extracting article contents...")
     content = extract_articles(links)
-    
+
     if not content:
         return "❌ Failed to extract article content from any links."
 

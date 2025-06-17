@@ -1,6 +1,8 @@
-from loguru import logger
-import sys
 import os
+import sys
+
+from loguru import logger
+
 
 LOG_DIR = os.path.join(os.getcwd(), "logs")
 os.makedirs(LOG_DIR, exist_ok=True)

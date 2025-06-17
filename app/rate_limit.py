@@ -1,6 +1,8 @@
 import time
-from fastapi import Request, HTTPException
+
+from fastapi import HTTPException, Request
 from starlette.middleware.base import BaseHTTPMiddleware
+
 
 class RateLimitMiddleware(BaseHTTPMiddleware):
     def __init__(self, app, throttle_rate: int = 60):

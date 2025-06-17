@@ -1,20 +1,20 @@
+"""ini bakal jadi ai agent sederhana yang menggunakan langchain untuk text to response
 """
-ini bakal jadi ai agent sederhana yang menggunakan langchain untuk text to response
-"""
-
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain_community.llms import Groq
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 
 import os
+
 from dotenv import load_dotenv
+from fastapi import APIRouter, HTTPException
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+from langchain_groq import ChatGroq
+from pydantic import BaseModel
+
 
 load_dotenv()
 
 # Inisialisasi LLM dari Groq
-llm = Groq(
+llm = ChatGroq(
     model="mixtral-8x7b-32768",
     api_key=os.getenv("GROQ_API_KEY")
 )

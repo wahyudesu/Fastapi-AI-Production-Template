@@ -1,15 +1,14 @@
+"""This will be a simple generative ai using LangChain for text-to-response functionality.
 """
-This will be a simple generative ai using LangChain for text-to-response functionality.
-"""
-
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain_groq import ChatGroq
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
 
 import os
+
 from dotenv import load_dotenv
+from fastapi import APIRouter, HTTPException
+from langchain.prompts import PromptTemplate
+from langchain_groq import ChatGroq
+from pydantic import BaseModel
+
 
 load_dotenv()
 
@@ -25,8 +24,7 @@ prompt = PromptTemplate(
     template="Jawab pertanyaan berikut dengan jelas dan ringkas:\nPertanyaan: {question}"
 )
 
-# Chain sederhana
-chain = LLMChain(llm=llm, prompt=prompt)
+chain = prompt | llm
 
 # Router FastAPI
 router = APIRouter(prefix="/chatbot", tags=["chatbot"])

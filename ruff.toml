@@ -1,51 +1,18 @@
-line-length = 120
-[format]
-quote-style = "double"
-docstring-code-format = true
-
-exclude = [
-  "./.cache",
-  "./.git",
-  "./.idea",
-  "./.mypy_cache",
-  "./.pytest_cache",
-  "./.venv",
-  "./venv",
-  "./env",
-  "./cached_venv",
-  "./docs",
-  "./var",
-  "./.vscode",
-]
-
-[lint.isort]
-lines-after-imports = 2
-lines-between-types = 1
-no-lines-before = ["future", "standard-library"]
-no-sections = false
-order-by-type = true
-
 [lint]
-extend-select = ["E", "F", "I", "UP", "B", "W", "C90", "N", "D", "PYI", "PT", "RET", "SIM", "ARG", "ERA"]
-ignore = [
-  "B008",
-  "D100",
-  "D101",
-  "D102",
-  "D103",
-  "D104",
-  "D105",
-  "D106",
-  "D107",
-  "D203",
-  "D213",
-  "COM812"
-]
+# 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.
+select = ["E4", "E7", "E9", "F", "B"]
 
+# 2. Avoid enforcing line-length violations (`E501`)
+ignore = ["E501"]
+
+# 3. Avoid trying to fix flake8-bugbear (`B`) violations.
+unfixable = ["B"]
+
+# 4. Ignore `E402` (import violations) in all `__init__.py` files, and in selected subdirectories.
 [lint.per-file-ignores]
-"test_*.py" = ["S101"]
-"tests.py" = ["S101"]
-"tests_*.py" = ["S101"]
-"*/tests/*" = ["S101"]
-"conftest.py" = ["S101"]
-"__init__.py" = ["F401", "F403"]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = ["E402"]
+
+[format]
+# 5. Use single quotes in `ruff format`.
+quote-style = "single"

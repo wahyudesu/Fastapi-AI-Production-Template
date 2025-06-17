@@ -1,11 +1,15 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Security
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials # security scheme
-from .logging_config import get_logger  # logging configuration
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer  # security scheme
+
+from .logging import get_logger  # logging configuration
+from .rate_limit import RateLimitMiddleware  # rate limiting middleware
+
 # from .dependencies import get_query_token  # security dependency
 from .routers import chatbot, predict  # import routers
-from .rate_limit import RateLimitMiddleware # rate limiting middleware
-import os
-from dotenv import load_dotenv
+
 
 load_dotenv()
 
