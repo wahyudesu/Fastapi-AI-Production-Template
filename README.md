@@ -52,7 +52,7 @@
 - ✅Lint and formatting using ruff
 - ✅Jupyter notebook for experiment ml and building ai agent
 - ✅Rate limiter and Middleware
-- ✅Very well documentent for easy understanding
+- ✅Very well documentation for easy understanding
 
 ## Project Structure
 
