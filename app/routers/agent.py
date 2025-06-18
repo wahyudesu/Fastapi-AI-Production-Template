@@ -1,13 +1,21 @@
-"""This module uses LangChain and OpenAI to create a simple research agent.
-It searches for articles, extracts content, and generates a New York Times-style article on a given topic.
-"""
+"""Agents router: Generate NYT-style articles using LangChain and OpenAI."""
+
+from fastapi import APIRouter, Query
+from pydantic import BaseModel
+from typing import Optional
 
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_community.tools import DuckDuckGoSearchResults
 from langchain_groq import ChatGroq
+from datetime import datetime
 from newspaper import Article
 
+router = APIRouter(
+    prefix="/agents",
+    tags=["agents"],
+    responses={404: {"description": "Not found"}}
+)
 
 # Inisialisasi model (sama dengan GPT-4o di phi)
 llm = ChatGroq(model_name="gpt-4o")
@@ -30,7 +38,7 @@ def extract_articles(links):
             article.parse()
             if article.text:
                 articles.append(f"[{article.title}]({url})\n\n{article.text}")
-        except:
+        except Exception:
             continue
     return "\n\n---\n\n".join(articles)
 
@@ -56,25 +64,20 @@ Format in clear Markdown.
 # Chain
 chain = LLMChain(llm=llm, prompt=prompt_template)
 
-# Fungsi utama
-from datetime import datetime
+class ArticleRequest(BaseModel):
+    topic: str
+    num_results: Optional[int] = 5
 
-
-def generate_article(topic):
-    print(f"🔍 Searching for articles about: {topic}")
-    links = search_links(topic)
-    print(f"✅ Found {len(links)} links.")
-
-    print("📰 Extracting article contents...")
+@router.post("/generate-article", summary="Generate NYT-style article from topic")
+async def generate_article_api(req: ArticleRequest):
+    """
+    Generate a New York Times-style article based on the given topic.
+    """
+    topic = req.topic
+    num_results = req.num_results
+    links = search_links(topic, num_results)
     content = extract_articles(links)
-
     if not content:
-        return "❌ Failed to extract article content from any links."
-
-    print("🧠 Generating final article...\n")
+        return {"error": "Failed to extract article content from any links."}
     response = chain.run(topic=topic, content=content, date=datetime.now().strftime("%B %d, %Y"))
-    return response
-
-# Contoh pemanggilan
-article = generate_article("Simulation theory")
-print(article)
+    return {"article": response}

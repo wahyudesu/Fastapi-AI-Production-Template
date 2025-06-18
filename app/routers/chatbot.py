@@ -1,24 +1,19 @@
-"""This will be a simple generative ai using LangChain for text-to-response functionality.
-"""
+"""Chatbot router: Simple generative AI using LangChain for text-to-response."""
 
 import os
-
 from dotenv import load_dotenv
 from fastapi import APIRouter, HTTPException
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 from pydantic import BaseModel
 
-
 load_dotenv()
 
-# Inisialisasi LLM dari Groq
 llm = ChatGroq(
     model="mixtral-8x7b-32768",
     api_key=os.getenv("GROQ_API_KEY")
 )
 
-# Prompt template
 prompt = PromptTemplate(
     input_variables=["question"],
     template="Jawab pertanyaan berikut dengan jelas dan ringkas:\nPertanyaan: {question}"
@@ -26,8 +21,11 @@ prompt = PromptTemplate(
 
 chain = prompt | llm
 
-# Router FastAPI
-router = APIRouter(prefix="/chatbot", tags=["chatbot"])
+router = APIRouter(
+    prefix="/chatbot",
+    tags=["chatbot"],
+    responses={404: {"description": "Not found"}}
+)
 
 class ChatRequest(BaseModel):
     question: str
@@ -35,8 +33,11 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
 
-@router.post("/ask", response_model=ChatResponse)
+@router.post("/ask", response_model=ChatResponse, summary="Ask chatbot a question")
 async def ask_question(request: ChatRequest):
+    """
+    Ask a question to the generative AI chatbot.
+    """
     try:
         answer = chain.run(question=request.question)
         return ChatResponse(answer=answer)
