@@ -39,8 +39,7 @@
 - Build and serve machine learning models via production-ready APIs
 - Create scalable and easily deployable AI/ML backend services
 - Develop AI Agent applications based on FastAPI
-- Integrate LLM workflows, monitoring, and prompt management
-- Support end-to-end model experimentation, deployment, and monitoring
+- Support end-to-end model experimentation, serving, and deployment
 
 ## Features
 - ✅Built in Security and API endpoint protection
