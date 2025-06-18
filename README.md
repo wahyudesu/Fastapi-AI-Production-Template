@@ -60,18 +60,16 @@
 root-project/
 ├── app/
 │   ├── main.py                # FastAPI entrypoint
-│   ├── dependencies.py        # Dependency management (e.g., tokens)
-│   ├── internal/              # Internal routers (e.g., admin)
-│   ├── routers/               # API routers (chatbot, predict, etc.)
-│   │   ├── chatbot.py         # Chatbot endpoints (file upload, entity extraction, etc.)
-│   │   ├── example.py         # Example endpoints (LLM workflow, feedback, etc.)
-│   │   └── predict.py         # Prediction endpoints (ML, summarization, etc.)
-│   └── model/                 # Model artifacts (e.g., pickle files)
-├── notebook/                  # Jupyter notebooks for experiments
-├── public/                    # Static files (images, documents, etc.)
-├── pyproject.toml             # Python configuration and dependencies
-├── uv.lock                    # Lockfile for uv/poetry
-└── README.md                  # Project documentation
+│   ├── logger.py              # Logging 
+│   ├── middleware.py          # Middleware logging and rate limiter
+│   ├── model/                 # Model artifacts (e.g., pickle files)
+│   └── routers/               # API routers (chatbot, predict, etc.)
+│       ├── agent.py           # Agent research endpoints
+│       ├── chatbot.py         # Chatbot endpoints (file upload, entity extraction, etc.)
+│       └── predict.py         # Prediction endpoints (ML, summarization, etc.)
+├── data/                      # Dataset
+├── k8s/                       # Kubernetes
+└── notebook/                  # Jupyter notebooks for experiments
 ```
 
 This structure makes code management and feature development easier.
