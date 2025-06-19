@@ -1,6 +1,6 @@
 """Agents router: Generate NYT-style articles using LangChain and OpenAI."""
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import Optional
 

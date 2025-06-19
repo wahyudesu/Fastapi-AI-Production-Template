@@ -53,6 +53,7 @@
 - ✅Jupyter notebook for experiment ml and building ai agent
 - ✅Rate limiter and Middleware
 - ✅Very well documentation for easy understanding
+- ... Adding MCP Features
 
 ## Project Structure
 
@@ -100,6 +101,7 @@ uv sync
 # Copy and edit .env file
 cp .env.example .env
 # Edit .env according to your needs
+# Edit token for security and groq api key if u use llm
 ```
 
 Linter
@@ -112,9 +114,11 @@ uv run ruff check
 uv run uvicorn main.app:app --reload
 ```
 
-After running the command above, your FastAPI application will be available at [http://localhost:8000](http://localhost:8000).  
+After running the command above, your FastAPI application will be available at [http://localhost:8000](http://localhost:8000?token=token).  
 
 You can also access the interactive API documentation at [http://localhost:8000/docs](http://localhost:8000/docs).
+
+To access the MCP endpoint, go to [http://localhost:8000/mcp](http://localhost:8000/mcp).
 
 ## Docker
 Build the Docker image with:

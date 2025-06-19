@@ -3,7 +3,8 @@ import os
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer  # security scheme
-from .routers import agent, chatbot, predict  # import routers
+from fastapi_mcp import FastApiMCP
+from .routers import agent, chatbot, predict, mcp  # import routers
 from .logger import logger
 from .middleware import Middleware
 
@@ -22,8 +23,12 @@ app = FastAPI(
 app.include_router(agent.router)  # research agent
 app.include_router(predict.router)  # ml predict
 app.include_router(chatbot.router)  # chatbot
+app.include_router(mcp.router)  # mcp weather service
 
 app.add_middleware(Middleware) 
+
+mcp = FastApiMCP(app)
+mcp.mount()
 
 # Dependency to verify Bearer Token
 def verify_token(credentials: HTTPAuthorizationCredentials = Security(security)):

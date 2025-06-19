@@ -6,16 +6,17 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "duckduckgo-search>=8.0.4",
+    "fastapi-mcp>=0.3.4",
     "fastapi[standard]>=0.115.12",
     "langchain>=0.3.25",
     "langchain-community>=0.3.25",
     "langchain-groq>=0.3.2",
     "loguru>=0.7.3",
+    "lxml[html-clean]>=5.4.0",
     "newspaper3k>=0.2.8",
     "numpy>=2.3.0",
     "pandas>=2.3.0",
     "pre-commit>=4.2.0",
-    "ruff>=0.11.13",
     "scikit-learn>=1.7.0",
     "seaborn>=0.13.2",
     "uvicorn>=0.34.2",
@@ -30,4 +31,5 @@ members = [
 [dependency-groups]
 dev = [
     "ipykernel>=6.29.5",
+    "ruff>=0.12.0",
 ]
