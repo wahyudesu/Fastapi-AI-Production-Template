@@ -24,7 +24,7 @@ CITY_COORDINATES = {
 
 @router.get("/weather")
 async def get_weather(
-   stateCode: str = Query(..., description="State code (e.g., 'CA' for California)"),
+   state_code: str = Query(..., description="State code (e.g., 'CA' for California)"),
    city: str = Query(..., description="City name (e.g., 'Los Angeles')")
 ) -> Dict[str, Any]:
    """
@@ -65,7 +65,7 @@ async def get_weather(
            today_weather = forecast_data["properties"]["periods"][0]
            return {
                "city": city,
-               "state": stateCode,
+               "state": state_code,
                "coordinates": {"lat": lat, "lon": lon},
                "date": today_weather["startTime"],
                "temperature": today_weather["temperature"],

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer  # security scheme
 from fastapi_mcp import FastApiMCP
-from .routers import agent, chatbot, predict, mcp  # import routers
+from .routers import agent, chatbot, predict, mcp
 from .logger import logger
 from .middleware import Middleware
 
