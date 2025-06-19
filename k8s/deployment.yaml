@@ -13,16 +13,16 @@ spec:
     metadata:
       labels:
         app: fastapi-api
-    spec:
-      containers:
-      - name: fastapi-api
-        image: your-dockerhub-username/fastapi-dev:latest
-        ports:
-        - containerPort: 80
-        resources:
-          requests:
-            cpu: "250m"
-            memory: "256Mi"
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
+    # spec: #uncomment this if u use k8s
+    #   containers:
+    #   - name: fastapi-api
+    #     image: your-dockerhub-username/fastapi-dev:latest
+    #     ports:
+    #     - containerPort: 80
+    #     resources:
+    #       requests:
+    #         cpu: "250m"
+    #         memory: "256Mi"
+    #       limits:
+    #         cpu: "500m"
+    #         memory: "512Mi"
