@@ -1,5 +1,4 @@
-"""Prediction router: Serve ML model predictions for Iris dataset.
-"""
+"""Prediction router: Serve ML model predictions for Iris dataset."""
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, field_validator
