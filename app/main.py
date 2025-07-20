@@ -7,6 +7,7 @@ from fastapi_mcp import FastApiMCP
 from .routers import agent, chatbot, predict, mcp
 from .logger import logger
 from .middleware import Middleware
+from scalar_fastapi import get_scalar_api_reference, Layout, Theme
 
 load_dotenv()
 
@@ -46,6 +47,15 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Security(security))
 async def root():
     logger.info('Request to index page')
     return {"message": "Hello World!", "description": app.description}
+
+@app.get("/scalar", include_in_schema=False)
+async def scalar_html():
+    return get_scalar_api_reference(
+        openapi_url=app.openapi_url,
+        title=app.title,
+        layout=Layout.MODERN,
+        theme=Theme.KEPLER
+    )
 
 # result = tadata_sdk.deploy(
 #     fastapi_app=app,

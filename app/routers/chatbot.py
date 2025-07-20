@@ -1,17 +1,18 @@
 """Chatbot router: Simple generative AI using LangChain for text-to-response."""
 
-import os
-from dotenv import load_dotenv
 from fastapi import APIRouter, HTTPException
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 from pydantic import BaseModel
 
+from dotenv import load_dotenv
+import os
+
 load_dotenv()
 
 llm = ChatGroq(
-    model="mixtral-8x7b-32768",
-    api_key=os.getenv("GROQ_API_KEY")
+    model="gemma2-9b-it",
+    api_key = os.getenv("GROQ_API_KEY")
 )
 
 prompt = PromptTemplate(
@@ -29,7 +30,7 @@ router = APIRouter(
 
 class ChatRequest(BaseModel):
     question: str
-
+        
 class ChatResponse(BaseModel):
     answer: str
 
@@ -39,7 +40,9 @@ async def ask_question(request: ChatRequest):
     Ask a question to the generative AI chatbot.
     """
     try:
-        answer = chain.run(question=request.question)
+        result = chain.invoke({"question": request.question})
+        # Extract the string content from the AIMessage object
+        answer = getattr(result, "content", str(result))
         return ChatResponse(answer=answer)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

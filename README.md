@@ -111,12 +111,14 @@ uv run ruff check
 
 ## Run on local
 ```powershell
-uv run uvicorn main.app:app --reload
+uv run uvicorn app.main:app --reload
 ```
 
 After running the command above, your FastAPI application will be available at [http://localhost:8000](http://localhost:8000?token=token).  
 
-You can also access the interactive API documentation at [http://localhost:8000/docs](http://localhost:8000/docs).
+You can access the beautiful interactive API documentation at [http://localhost:8000/scalar](http://localhost:8000/scalar).
+
+You can also access the interactive API documentation on default swagger-ui at [http://localhost:8000/docs](http://localhost:8000/docs).
 
 To access the MCP endpoint, go to [http://localhost:8000/mcp](http://localhost:8000/mcp).
 

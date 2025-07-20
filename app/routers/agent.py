@@ -1,15 +1,17 @@
 """Agents router: Generate NYT-style articles using LangChain and OpenAI."""
 
 from fastapi import APIRouter
-from pydantic import BaseModel
-from typing import Optional
+from typing import Annotated
 
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
-from langchain_community.tools import DuckDuckGoSearchResults
-from langchain_groq import ChatGroq
-from datetime import datetime
-from newspaper import Article
+from langchain.chat_models import init_chat_model
+from typing_extensions import TypedDict
+
+from langgraph.graph import StateGraph, START, END
+from langgraph.graph.message import add_messages
+from langchain_core.messages import BaseMessage
+
+from langchain_tavily import TavilySearch
+from langgraph.prebuilt import ToolNode, tools_condition
 
 router = APIRouter(
     prefix="/agents",
@@ -17,67 +19,83 @@ router = APIRouter(
     responses={404: {"description": "Not found"}}
 )
 
-# Inisialisasi model (sama dengan GPT-4o di phi)
-llm = ChatGroq(model_name="gpt-4o")
+class State(TypedDict):
+    # Messages have the type "list". The `add_messages` function
+    # in the annotation defines how this state key should be updated
+    # (in this case, it appends messages to the list, rather than overwriting them)
+    messages: Annotated[list, add_messages]
 
-# Langkah 1: Cari artikel dari DuckDuckGo
-search_tool = DuckDuckGoSearchResults()
+graph_builder = StateGraph(State)
 
-def search_links(topic, num_results=5):
-    results = search_tool.run(topic)
-    links = [r['href'] for r in results[:num_results] if 'href' in r]
-    return links
+llm = init_chat_model("llama3-8b-8192", model_provider="groq")
 
-# Langkah 2: Ambil isi artikel dari setiap link
-def extract_articles(links):
-    articles = []
-    for url in links:
-        try:
-            article = Article(url)
-            article.download()
-            article.parse()
-            if article.text:
-                articles.append(f"[{article.title}]({url})\n\n{article.text}")
-        except Exception:
-            continue
-    return "\n\n---\n\n".join(articles)
+# Modification: tell the LLM which tools it can call
+# highlight-next-line
+tool = TavilySearch(max_results=2)
+tools = [tool]
+llm_with_tools = llm.bind_tools(tools)
 
-# Langkah 3: Prompt untuk membuat artikel ala NYT
-prompt_template = PromptTemplate(
-    input_variables=["topic", "content"],
-    template="""
-You are a senior New York Times journalist.
+def chatbot(state: State):
+    return {"messages": [llm_with_tools.invoke(state["messages"])]}
 
-Today's date is {date}.
+graph_builder.add_node("chatbot", chatbot)
 
-Write a detailed, high-quality, NYT-worthy article on the topic: "{topic}".
+tool_node = ToolNode(tools=[tool])
+graph_builder.add_node("tools", tool_node)
 
-Use the following sources:
-
-{content}
-
----
-Format in clear Markdown.
-"""
+graph_builder.add_conditional_edges(
+    "chatbot",
+    tools_condition,
 )
+# Any time a tool is called, we return to the chatbot to decide the next step
+graph_builder.add_edge("tools", "chatbot")
+graph_builder.add_edge(START, "chatbot")
+graph_builder.add_edge("chatbot", END)
 
-# Chain
-chain = LLMChain(llm=llm, prompt=prompt_template)
+graph = graph_builder.compile()
 
-class ArticleRequest(BaseModel):
-    topic: str
-    num_results: Optional[int] = 5
+# FastAPI endpoint to get graph PNG
+from fastapi.responses import Response
 
-@router.post("/generate-article", summary="Generate NYT-style article from topic")
-async def generate_article_api(req: ArticleRequest):
+@router.get("/graph", response_class=Response, summary="Get LangGraph structure as PNG")
+async def get_graph_png():
     """
-    Generate a New York Times-style article based on the given topic.
+    Returns the LangGraph structure as a PNG image.
     """
-    topic = req.topic
-    num_results = req.num_results
-    links = search_links(topic, num_results)
-    content = extract_articles(links)
-    if not content:
-        return {"error": "Failed to extract article content from any links."}
-    response = chain.run(topic=topic, content=content, date=datetime.now().strftime("%B %d, %Y"))
-    return {"article": response}
+    try:
+        png_bytes = graph.get_graph().draw_mermaid_png()
+        return Response(content=png_bytes, media_type="image/png")
+    except Exception as e:
+        return Response(content=f"Gagal menyimpan gambar: {e}", media_type="text/plain", status_code=500)
+
+def stream_graph_updates(user_input: str):
+    for event in graph.stream({"messages": [{"role": "user", "content": user_input}]}):
+        for value in event.values():
+            print("Assistant:", value["messages"][-1].content)
+
+
+from fastapi import Request
+from pydantic import BaseModel
+
+# Request model for chat endpoint
+class ChatRequest(BaseModel):
+    message: str
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "message": "tell me about president jokowi"
+            }
+        }
+
+@router.post("/ask")
+async def chat_endpoint(request: ChatRequest):
+    """
+    Chat with LangGraph agent. Send a message and get response.
+    """
+    user_input = request.message
+    responses = []
+    for event in graph.stream({"messages": [{"role": "user", "content": user_input}]}):
+        for value in event.values():
+            responses.append(value["messages"][-1].content)
+    return {"responses": responses}
