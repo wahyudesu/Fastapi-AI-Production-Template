@@ -34,6 +34,11 @@
     <img src="https://img.shields.io/badge/Langchain-1C3C3C?style=flat&logo=Langchain&logoColor=white" alt="Langchain">
     <img src="https://img.shields.io/badge/Pydantic-E92063?style=flat&logo=Pydantic&logoColor=white" alt="Pydantic">
 </p>
+<p align="center">
+<a href="https://www.producthunt.com/products/github-144?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-github&#0045;ff853e12&#0045;a865&#0045;4ab6&#0045;8424&#0045;133c242178f1" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=995241&theme=light&t=1753006279062" alt="GitHub - The&#0032;simplest&#0032;starter&#0032;repository&#0032;for&#0032;building&#0032;ML&#0047;AI&#0032;projects | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+</p>
+
+
 
 ## Use Case
 - Build and serve machine learning models via production-ready APIs
