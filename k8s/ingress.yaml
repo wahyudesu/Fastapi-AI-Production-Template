@@ -13,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: fastapi-api-service
+            name: fastapi-deployment
             port:
               number: 80

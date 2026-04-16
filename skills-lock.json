@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "cuml-machine-learning": {
+      "source": "langchain-ai/deepagents",
+      "sourceType": "github",
+      "computedHash": "4f737577882391baed64cd085c4e92b8bf799e8003a40a78bc5b32421798bb59"
+    },
+    "fastapi": {
+      "source": "fastapi/fastapi",
+      "sourceType": "github",
+      "computedHash": "ee23d5285caf055cf164ff45dd34888d381143564666baacab8aa786f22e413a"
+    }
+  }
+}

@@ -1,6 +1,7 @@
-import os
-
 from dotenv import load_dotenv
+load_dotenv()
+
+import os
 from fastapi import Depends, FastAPI, HTTPException, Security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer  # security scheme
 from fastapi_mcp import FastApiMCP

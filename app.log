@@ -3607,3 +3607,15 @@ asyncio.exceptions.CancelledError
 2025-07-20 16:04:25,038 - INFO - {'url': '/', 'method': 'GET', 'process_time': 0.001001119613647461}
 2025-07-20 16:04:34,887 - INFO - Request to index page
 2025-07-20 16:04:34,888 - INFO - {'url': '/', 'method': 'GET', 'process_time': 0.0009996891021728516}
+2026-04-16 00:04:29.561 | INFO     | app.middleware:dispatch:35 - {'url': '/', 'method': 'GET', 'process_time': 0.0004589557647705078}
+2026-04-16 00:04:46.498 | INFO     | app.main:root:49 - Request to index page
+2026-04-16 00:04:46.498 | INFO     | app.middleware:dispatch:35 - {'url': '/', 'method': 'GET', 'process_time': 0.0009119510650634766}
+2026-04-16 00:04:47.563 | INFO     | app.middleware:dispatch:35 - {'url': '/predict/iris', 'method': 'POST', 'process_time': 1.0606029033660889}
+2026-04-16 00:04:50.279 | INFO     | app.middleware:dispatch:35 - {'url': '/scalar', 'method': 'GET', 'process_time': 0.00035262107849121094}
+2026-04-16 00:05:42.758 | INFO     | app.middleware:dispatch:35 - {'url': '/predict/iris', 'method': 'POST', 'process_time': 0.002263784408569336}
+2026-04-16 00:05:43.148 | INFO     | app.middleware:dispatch:35 - {'url': '/chatbot/ask', 'method': 'POST', 'process_time': 0.3751652240753174}
+2026-04-16 00:07:19.527 | INFO     | app.main:root:49 - Request to index page
+2026-04-16 00:07:19.528 | INFO     | app.middleware:dispatch:35 - {'url': '/', 'method': 'GET', 'process_time': 0.001092672348022461}
+2026-04-16 00:07:19.534 | INFO     | app.middleware:dispatch:35 - {'url': '/predict/iris', 'method': 'POST', 'process_time': 0.0019085407257080078}
+2026-04-16 00:07:19.540 | INFO     | app.middleware:dispatch:35 - {'url': '/mcp/books', 'method': 'GET', 'process_time': 0.0007410049438476562}
+2026-04-16 00:07:19.701 | INFO     | app.middleware:dispatch:35 - {'url': '/agents/graph', 'method': 'GET', 'process_time': 0.15573549270629883}

@@ -32,5 +32,5 @@ class Middleware(BaseHTTPMiddleware):
             'method': request.method,
             'process_time': process_time
         }
-        logger.info(log_dict, extra=log_dict)
+        logger.info("{}", log_dict)
         return response

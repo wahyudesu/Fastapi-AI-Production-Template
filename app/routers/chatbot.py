@@ -1,7 +1,7 @@
 """Chatbot router: Simple generative AI using LangChain for text-to-response."""
 
 from fastapi import APIRouter, HTTPException
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 from pydantic import BaseModel
 

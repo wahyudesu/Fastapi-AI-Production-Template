@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 import csv
+from pathlib import Path
 
-# Create router for MCP endpoints
 router = APIRouter(
     prefix="/mcp",
     tags=["mcp books"],
@@ -10,6 +10,7 @@ router = APIRouter(
 
 @router.get("/books", operation_id="get_csv_data")
 async def read_books():
-    with open("books.csv", newline='', encoding="utf-8") as f:
+    csv_path = Path(__file__).parent.parent.parent / "data" / "books.csv"
+    with open(csv_path, newline='', encoding="utf-8") as f:
         reader = csv.DictReader(f)
         return list(reader)

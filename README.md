@@ -2,7 +2,7 @@
 
 <h3 align="center">Simple starter repo for your Machine Learning/AI projects</h3>
 <p align="center">
-    <img src="thumbnail.png" alt="FastAPI AI Production Template Thumbnail" width="600">
+    <img src="images/thumbnail.png" alt="FastAPI AI Production Template Thumbnail" width="600">
 </p>
 
 <p align="center">
