@@ -1,3 +1,4 @@
+successfully downloaded text file (SHA: ad6c84d8fa3bbccd94e2e8f595457fed2727f9dc)
 [project]
 name = "Fastapi-AI-Production-Boilerplate"
 version = "0.3.0"
@@ -14,11 +15,10 @@ dependencies = [
     "langchain-tavily>=0.2.10",
     "langgraph>=1.0.8",
     "loguru>=0.7.3",
-    "lxml[html-clean]>=5.4.0",
-    "newspaper3k>=0.2.8",
+    "lxml>=5.0.0",
+    "trafilatura>=1.6.0",
     "numpy>=2.3.0",
     "pandas>=2.2.3,<3.0",
-    "pre-commit>=4.2.0",
     "scalar-fastapi>=1.2.2",
     "scikit-learn>=1.7.0",
     "seaborn>=0.13.2",
@@ -35,4 +35,5 @@ members = [
 dev = [
     "ipykernel>=6.29.5",
     "ruff>=0.12.0",
+    "pre-commit>=4.2.0",
 ]
