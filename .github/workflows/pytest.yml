@@ -1,3 +1,4 @@
+successfully downloaded text file (SHA: 0d3dbd2e0be831c91ccefac62af965315c1c6f9b)
 name: pytest
 
 on:
@@ -21,7 +22,7 @@ jobs:
           python-version-file: ".python-version"
 
       - name: Install the project
-        run: uv sync --locked --all-extras --dev
+        run: uv sync --all-extras --dev
 
       - name: Run tests
         run: uv run pytest tests/ || true
